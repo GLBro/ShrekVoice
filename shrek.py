@@ -47,6 +47,8 @@ while True:
 
     elif "why" or "look" in answer:
         respond = "i like my privacy"
+        elif "how" in answer 
+        respond = "hold the phone"
 
     else:
         respond = random.choice(response)
