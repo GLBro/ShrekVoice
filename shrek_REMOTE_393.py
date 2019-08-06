@@ -18,32 +18,8 @@ while True:
         respond = "its on my to do list"
     elif "princess" in answer or 'fiona' in answer:
         respond = "the princess will be up in the stairs in the highest room in the tallest tower"
-    elif "hate" in answer or "mean" in answer:
-        respond = "well,thats not very nice."
     elif "ogre" in answer:
         respond = "ogres are like onions. onions have layers. ogres have layers"
-    elif "smart" in answer:
-        respond = "well ER That explains a lot!"
-    elif "sad" in answer:
-        respond = "oh would you look at that!"
-    elif "house" in answer:
-        respond = "sure it big enough...but look at the location!"
-    elif "animal" in answer:
-        respond = "its just a donkey"
-    elif "loud" in answer:
-        respond = "could you be quiet for 5 minutes FOR 5 MINUTES"
-    elif "dinner" in answer:
-        respond = "dead broad.. OFF THE TABLE!"
-    elif "lonley" in answer:
-        respond = "well its no wonder you have no friends!"
-    elif "Could" in answer:
-        respond = "NO!"
-    elif "do" in answer:
-        respond = "Yes.NO!"
-
-    elif "why" in answer:
-        respond = "i like my privacy"
-
     else:
         respond = random.choice(response)
     
