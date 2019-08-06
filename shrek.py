@@ -1,10 +1,12 @@
 import random,time
 from playsound import playsound
+import speech_recognition as sr
 
+#Reads the quotes
 response = open("soundclips/shrekquotes", "r").readlines()
 
-while True:
-    answer = input('What would you like to ask: ')
+def handle_input(answer): 
+    #Any specific words mentioned trigger a response
     if "song" in answer:
         respond = "We will play a song,"
         playsound("soundclips/movie quotes (sound)/song.mp3")
@@ -62,6 +64,38 @@ while True:
     else: 
         respond = random.choice(response)
     
- 
-    time.sleep(random.randint(0,3))
-    print(respond) 
+  
+    print(respond)
+
+# Try using a microphone, else fallback to reading from the console
+try:
+    #Setup microphone
+    r = sr.Recognizer()
+    mic = sr.Microphone(device_index=0)
+
+    with mic as source:
+        # The microphone worked, set it up further
+        r.dynamic_energy_threshold = False    
+        print('>>> ambient noise')
+        r.adjust_for_ambient_noise(source)
+
+        #Takes the input in  gives an output
+        while True:
+            print('>>> listening')
+            audio = r.listen(source)
+            try:
+                print('>>> sending to google')
+                answer = r.recognize_google(audio)
+            except sr.UnknownValueError:
+                print('>>> unknown')
+                continue
+            print(answer)
+            handle_input(answer)
+except OSError:
+    # We couldn't use the microphone as a source
+    print('No Microphone, started in Text Mode')
+    while True:
+        answer = input('> ')
+        time.sleep(random.randint(0,3))
+        handle_input(answer)
+
