@@ -1,18 +1,19 @@
 import random
 import speech_recognition as sr
-import time
-sr.__version__
+
+#Reads the quotes
+response = open("soundclips/shrekquotes", "r").readlines()
+
 r = sr.Recognizer()
 mic = sr.Microphone(device_index=0)
 
-
-response = open("soundclips/shrekquotes", "r").readlines()
-
-
+#Setup microphone
 with mic as source:
-    r.dynamic_energy_threshold = False
+    r.dynamic_energy_threshold = False    
     print('>>> ambient noise')
     r.adjust_for_ambient_noise(source)
+
+    #Takes the input in  gives an output
     while True:
         print('>>> listening')
         audio = r.listen(source)
@@ -22,8 +23,9 @@ with mic as source:
         except sr.UnknownValueError:
             print('>>> unknown')
             continue
-        print(answer)  #input('What would you like to ask: ')
-            #answer = recognize_speech_from_mic(r, mic)
+        print(answer)
+
+        #Any specific words mentioned trigger a response
         if "song" in answer:
             respond = "We will play a song"
         elif "swamp" in answer:
