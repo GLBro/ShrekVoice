@@ -18,14 +18,10 @@ while True:
         respond = "its on my to do list"
     elif "princess" in answer or 'fiona' in answer:
         respond = "the princess will be up in the stairs in the highest room in the tallest tower"
-<<<<<<< HEAD
     elif "hate" in answer or "mean" in answer:
         respond = "well,thats not very nice."
-    
-=======
     elif "ogre" in answer:
         respond = "ogres are like onions. onions have layers. ogres have layers"
->>>>>>> refs/remotes/origin/master
     else:
         respond = random.choice(response)
     
