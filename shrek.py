@@ -50,16 +50,18 @@ while True:
     elif "scary" in answer: 
         respond = "this is the part where you run away"
 
-    elif "why" or "look" in answer:
+    elif "why" in answer or "look" in answer:
         respond = "i like my privacy"
     elif "how" in answer:
         respond = "hold the phone"
-    elif "can"or "we" or "go" in answer:
+    elif "can" in answer or "we "in answer or"go"in answer:
         respond =  playsound("soundclips/movie quotes (sound)/adventure.mp3") 
+    elif "best" in answer:
+        respond =playsound("soundclips/movie quotes (sound)/repay.mp3") 
 
     else:
         respond = random.choice(response)
     
  
     time.sleep(random.randint(0,3))
-    print(respond)
+    print(respond) 
