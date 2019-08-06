@@ -22,8 +22,33 @@ while True:
         respond = "well,thats not very nice."
     elif "ogre" in answer:
         respond = "ogres are like onions. onions have layers. ogres have layers"
+<<<<<<< HEAD
     elif "will" in answer:
         respond = "yeah right before they burst into flame"
+=======
+    elif "smart" in answer:
+        respond = "well ER That explains a lot!"
+    elif "sad" in answer:
+        respond = "oh would you look at that!"
+    elif "house" in answer:
+        respond = "sure it big enough...but look at the location!"
+    elif "animal" in answer:
+        respond = "its just a donkey"
+    elif "loud" in answer:
+        respond = "could you be quiet for 5 minutes FOR 5 MINUTES"
+    elif "dinner" in answer:
+        respond = "dead broad.. OFF THE TABLE!"
+    elif "lonley" in answer:
+        respond = "well its no wonder you have no friends!"
+    elif "Could" in answer:
+        respond = "NO!"
+    elif "do" in answer:
+        respond = "Yes.NO!"
+
+    elif "why" in answer:
+        respond = "i like my privacy"
+
+>>>>>>> b5436a642d841bba32b5c28405f9dad4529e27a3
     else:
         respond = random.choice(response)
     
