@@ -6,7 +6,8 @@ response = open("soundclips/shrekquotes", "r").readlines()
 while True:
     answer = input('What would you like to ask: ')
     if "song" in answer:
-        respond = "We will play a song"
+        respond = "We will play a song,"
+        playsound("soundclips/movie quotes (sound)/song.mp3")
     elif "swamp" in answer:
         rad = "Get out of my swamp!", "that would be my home"
         respond = random.choice(rad)
@@ -48,8 +49,7 @@ while True:
     elif "do" in answer:
         respond = "Yes.NO!"
     elif "scary" in answer: 
-        respond = "this is the part where you run away"
-
+        respond = playsound("soundclips/movie quotes (sound)/scary.mp3") 
     elif "why" in answer or "look" in answer:
         respond = "i like my privacy"
     elif "how" in answer:
@@ -59,7 +59,7 @@ while True:
     elif "best" in answer:
         respond =playsound("soundclips/movie quotes (sound)/repay.mp3") 
 
-    else:
+    else: 
         respond = random.choice(response)
     
  
