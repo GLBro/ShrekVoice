@@ -4,15 +4,16 @@ from tkinter import *
 root = Tk()
 root.title("Shrek chat box")
 root.resizable(False, False)
-shrekvoice =Entry()
-shrekvoice.grid()
+
 
 #func for text input
 def buttonFunction():
     print("Shrek")
 
+img=1
+
 #bg image
-shrekImage = PhotoImage(file="shrek is peng.png" )
+shrekImage = PhotoImage(file="img"+str(img)+".png" )
 shreklabel = Label(root, image=shrekImage)
 shreklabel.grid(row=0)
 
@@ -24,7 +25,12 @@ speechlabel.place(x=0, y=0)
 #response
 respond = "shrek"
 output = Label(text=respond) #prints value of 'respond' variable to the label!
-output.place(x=80, y= 70)
+output.place(x=80, y= 45)
+output.config(font=("Arial", 44),bg="#EDE6E6")
+
+#input box
+shrekvoice =Entry()
+shrekvoice.grid()
 
 #mic button
 micButton=Button(root)
@@ -33,7 +39,13 @@ micButton.config(image=micImage,width="100",height="100", bd=0,command=buttonFun
 micButton.grid(row=13)
 
 b = Button(root, text="enter!", command=buttonFunction) #text input button 
-b.grid(row=1)
+b.grid(row=2)
+
+
+#shrekvoice.grid_remove() #hide element 
 
 root.mainloop()
+
+
+
 
