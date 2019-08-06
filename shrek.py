@@ -1,4 +1,4 @@
-import random
+import random,time 
 response = open("soundclips/shrekquotes", "r").readlines()
 while True:
     answer = input('What would you like to ask: ')
@@ -22,10 +22,8 @@ while True:
         respond = "well,thats not very nice."
     elif "ogre" in answer:
         respond = "ogres are like onions. onions have layers. ogres have layers"
-<<<<<<< HEAD
     elif "will" in answer:
         respond = "yeah right before they burst into flame"
-=======
     elif "smart" in answer:
         respond = "well ER That explains a lot!"
     elif "sad" in answer:
@@ -44,12 +42,16 @@ while True:
         respond = "NO!"
     elif "do" in answer:
         respond = "Yes.NO!"
+    elif "scary" in answer: 
+        respond = "this is the part where you run away"
 
-    elif "why" in answer:
+    elif "why" or "look" in answer:
         respond = "i like my privacy"
 
->>>>>>> b5436a642d841bba32b5c28405f9dad4529e27a3
     else:
         respond = random.choice(response)
     
+ 
+    time.sleep(random.randint(0,3))
+
     print(respond)
