@@ -54,6 +54,8 @@ while True:
         respond = "i like my privacy"
     elif "how" in answer:
         respond = "hold the phone"
+    elif "can"or "we" or "go" in answer:
+        respond =  playsound("soundclips/movie quotes (sound)/adventure.mp3") 
 
     else:
         respond = random.choice(response)
