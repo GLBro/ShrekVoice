@@ -1,7 +1,19 @@
 import random
+import speech_recognition as sr
+sr.__version__
+r = sr.Recognizer()
+mic = sr.Microphone(device_index=0)
+[
+    'Microphone (Realtek Audio)'
+]
+
 response = open("soundclips/shrekquotes", "r").readlines()
 while True:
-    answer = input('What would you like to ask: ')
+    with mic as source:
+        r.adjust_for_ambient_noise(source)
+        audio = r.listen(source)
+        print(r.recognize_google(audio))
+        answer = r.recognize_google(audio)  #input('What would you like to ask: ')
     if "song" in answer:
         respond = "We will play a song"
     elif "swamp" in answer:
