@@ -18,6 +18,9 @@ while True:
         respond = "its on my to do list"
     elif "princess" in answer or 'fiona' in answer:
         respond = "the princess will be up in the stairs in the highest room in the tallest tower"
+    elif "hate" in answer or "mean" in answer:
+        respond = "well,thats not very nice."
+    
     else:
         respond = random.choice(response)
     
