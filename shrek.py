@@ -22,6 +22,8 @@ while True:
         respond = "well,thats not very nice."
     elif "ogre" in answer:
         respond = "ogres are like onions. onions have layers. ogres have layers"
+    elif "will" in answer:
+        respond = "yeah right before they burst into flame"
     else:
         respond = random.choice(response)
     
