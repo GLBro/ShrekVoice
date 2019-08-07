@@ -1,5 +1,6 @@
 import random,time
 from playsound import playsound
+import webbrowser
 import speech_recognition as sr
 
 #Reads the quotes
@@ -63,15 +64,27 @@ def handle_input(answer):
     elif "meme" in answer:
         respond =  playsound("soundclips/movie quotes (sound)/Shrek meme.mp3") 
     elif "cat" in answer or "puss in boots" in answer:
-        respond = playsound("soundclips/movie quotes (sound)/kill.mp3") 
+        respond = playsound("soundclips/movie quotes (sound)/kill.mp3")
+    elif "Chrome" in answer:
+        respond = webbrowser.open('http://google.co.kr', new=2)
+    elif "fan" in answer or "page" in answer:
+        respond=webbrowser.open("http://www.fanpop.com/clubs/shrek", new=2) 
+    elif "youtube" in answer.lower() or "video" in answer:
+        respond= webbrowser.open("https://www.youtube.com/watch?v=oCij5Kx5av0", new=2) 
+    elif "news" in answer:
+        respond= webbrowser.open("https://www.independent.co.uk/topic/Shrek", new=2) 
+    elif "fortnite" in answer:
+           respond= webbrowser.open("https://www.youtube.com/watch?v=C5MUSkfSL5c", new=2) 
+    elif "git" in answer:
+        respond= webbrowser.open("https://github.com/GLBro/ShrekVoice/issues ", new=2) 
+         
     else: 
         respond = random.choice(response)
-    
-  
     print(respond)
 
 # Try using a microphone, else fallback to reading from the console
 try:
+
     #Setup microphone
     r = sr.Recognizer()
     mic = sr.Microphone(device_index=0)
