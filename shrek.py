@@ -136,7 +136,7 @@ def handle_input(answer, listAnswer):
             respond = contents
     
     elif "delete"in answer:
-        
+
             os.remove("list.txt")
             print("File Removed!")   
 
