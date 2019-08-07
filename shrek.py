@@ -63,7 +63,7 @@ def handle_input(answer):
     elif "meme" in answer:
         respond =  playsound("soundclips/movie quotes (sound)/Shrek meme.mp3") 
     elif "cat" in answer or "puss in boots" in answer:
-        respond =("soundclips/movie quotes (sound)/kill.mp3")  
+        respond = playsound("soundclips/movie quotes (sound)/kill.mp3")  
     else: 
         respond = random.choice(response)
     
