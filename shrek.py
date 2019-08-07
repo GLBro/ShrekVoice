@@ -16,6 +16,18 @@ engine.setProperty('volume',1)
 engine.say("Hello There")
 engine.runAndWait()
 
+shreksNo = random.randint(1,100)
+
+def game(shreksNo):
+    print("Guess my number!")    
+    closeToShrek = shreksNo-7
+    shreksNo_str = str(shreksNo)
+    guess = input("Guess! ")
+    if guess != shreksNo_str:
+        print("My number is close to " + str(closeToShrek))
+        game(shreksNo)
+    else:
+        print("you win ")
 
 def handle_input(answer, listAnswer):
     respond = '' 
@@ -124,8 +136,13 @@ def handle_input(answer, listAnswer):
             respond = contents
     
     elif "delete"in answer:
+        
             os.remove("list.txt")
             print("File Removed!")   
+
+    elif "game" in answer:
+       game(shreksNo)
+            
 
     else: 
         random.choice(response)
