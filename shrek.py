@@ -1,5 +1,6 @@
 import random,time
 from playsound import playsound
+import webbrowser
 import speech_recognition as sr
 import pyttsx3
 #Reads the quotes
@@ -28,12 +29,11 @@ def handle_input(answer):
         rad = "could you be quiet just FOR 5 MINUTES!", "two things ok?Shut..up"
         respond = random.choice(rad)
     elif "story" in answer: 
-        playsound("soundclips/movie quotes (sound)/shreks story.mp3")
-
-        respond= "Once upon a time, there was a lovely princess. But she had an enchantment upon her of a fearful sort which could only be broken by love's first kiss. She was locked away in a castle guarded by a terrible fire-breathing dragon. Many brave knights had attempted to free her from this dreadful prison, but none prevailed. She waited in the dragon's keep, in the highest room of the tallest tower, for her true love, and true love's first kiss."
+       respond= playsound("soundclips/movie quotes (sound)/storyofshrek.mp3")
+       respond= "Once upon a time, there was a lovely princess. But she had an enchantment upon her of a fearful sort which could only be broken by love's first kiss. She was locked away in a castle guarded by a terrible fire-breathing dragon. Many brave knights had attempted to free her from this dreadful prison, but none prevailed. She waited in the dragon's keep, in the highest room of the tallest tower, for her true love, and true love's first kiss."
     elif "remind" in answer:
         respond = "its on my to do list"
-    elif "princess" in answer or 'fiona' in answer:
+    elif "princess" in answer or 'fiona' in answer or "where" in answer:
         respond = "the princess will be up in the stairs in the highest room in the tallest tower"
     elif "hate" in answer or "mean" in answer:
         respond = "well,thats not very nice."
@@ -46,6 +46,7 @@ def handle_input(answer):
     elif "sad" in answer:
         respond = "oh would you look at that!"
     elif "house" in answer:
+        respond = playsound ("soundclips/movie quotes (sound)/location.mp3") 
         respond = "sure it big enough...but look at the location!"
     elif "animal" in answer:
         respond = "its just a donkey"
@@ -53,7 +54,7 @@ def handle_input(answer):
         respond = "could you be quiet for 5 minutes FOR 5 MINUTES"
     elif "dinner" in answer:
         respond = "dead broad.. OFF THE TABLE!"
-    elif "lonley" in answer:
+    elif "lonley" in answer or "name" in answer:
         respond = "well its no wonder you have no friends!"
     elif "Could" in answer:
         respond = "NO!"
@@ -69,16 +70,31 @@ def handle_input(answer):
         playsound("soundclips/movie quotes (sound)/adventure.mp3") 
     elif "best" in answer:
         playsound("soundclips/movie quotes (sound)/repay.mp3") 
-
+    elif "meme" in answer:
+        respond =  playsound("soundclips/movie quotes (sound)/Shrek meme.mp3") 
+    elif "cat" in answer or "puss in boots" in answer:
+        respond = playsound("soundclips/movie quotes (sound)/kill.mp3")
+    elif "Chrome" in answer:
+        respond = webbrowser.open('http://google.co.kr', new=2)
+    elif "fan" in answer or "page" in answer:
+        respond=webbrowser.open("http://www.fanpop.com/clubs/shrek", new=2) 
+    elif "youtube" in answer.lower() or "video" in answer:
+        respond= webbrowser.open("https://www.youtube.com/watch?v=oCij5Kx5av0", new=2) 
+    elif "news" in answer:
+        respond= webbrowser.open("https://www.independent.co.uk/topic/Shrek", new=2) 
+    elif "fortnite" in answer:
+           respond= webbrowser.open("https://www.youtube.com/watch?v=C5MUSkfSL5c", new=2) 
+    elif "git" in answer:
+        respond= webbrowser.open("https://github.com/GLBro/ShrekVoice/issues ", new=2) 
+         
     else: 
         respond = random.choice(response)
-    
-  
     print(respond)
     engine.say(respond)
     engine.runAndWait()
 # Try using a microphone, else fallback to reading from the console
 try:
+
     #Setup microphone
     r = sr.Recognizer()
     mic = sr.Microphone(device_index=0)
@@ -108,4 +124,3 @@ except OSError:
         answer = input('> ')
         time.sleep(random.randint(0,3))
         handle_input(answer)
-
