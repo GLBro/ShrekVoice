@@ -3,6 +3,8 @@ from playsound import playsound
 import webbrowser
 import speech_recognition as sr
 import pyttsx3
+import datetime
+
 #Reads the quotes
 response = open("soundclips/shrekquotes", "r").readlines()
 
@@ -86,7 +88,8 @@ def handle_input(answer):
            respond= webbrowser.open("https://www.youtube.com/watch?v=C5MUSkfSL5c", new=2) 
     elif "git" in answer:
         respond= webbrowser.open("https://github.com/GLBro/ShrekVoice/issues ", new=2) 
-         
+    elif "time" in answer:
+        respond= datetime.datetime.now()
     else: 
         respond = random.choice(response)
     print(respond)
