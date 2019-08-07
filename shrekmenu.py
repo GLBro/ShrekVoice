@@ -5,17 +5,35 @@ root = Tk()
 root.title("Shrek chat box")
 root.resizable(False, False)
 
+img=1
+path="img"+str(img)+".png" 
+
+#bg image
+shrekImage = PhotoImage(file=path)
+print(path)
+shreklabel = Label(root, image=shrekImage)
+shreklabel.grid(row=0)
+
+#bg image change
+def setImg():
+    global img
+    global path
+    img+=1
+    path="img"+str(img)+".png" 
+    print(path)
+    #shrekImage.file=path
+    global shrekImage
+    shrekImage = PhotoImage(file=path)
+    shreklabel.configure(image=shrekImage)
+    
 
 #func for text input
 def buttonFunction():
-    print("Shrek")
+    global img
+    global path
+    setImg()
 
-img=1
 
-#bg image
-shrekImage = PhotoImage(file="img"+str(img)+".png" )
-shreklabel = Label(root, image=shrekImage)
-shreklabel.grid(row=0)
 
 #speech bubble
 speechImage = PhotoImage(file="speechBubble.png" )
@@ -44,7 +62,9 @@ b.grid(row=2)
 
 #shrekvoice.grid_remove() #hide element 
 
+#setImg() #set bg image on run 
 root.mainloop()
+
 
 
 
