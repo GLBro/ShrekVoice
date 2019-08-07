@@ -1,11 +1,20 @@
 import random,time
 from playsound import playsound
 import speech_recognition as sr
-
+import pyttsx3
 #Reads the quotes
 response = open("soundclips/shrekquotes", "r").readlines()
 
-def handle_input(answer): 
+#Sets ups text to speech
+engine = pyttsx3.init()
+engine.setProperty('rate', 100) 
+engine.setProperty('volume',1)
+engine.say("Hello There")
+engine.runAndWait()
+
+
+def handle_input(answer):
+    respond = '' 
     #Any specific words mentioned trigger a response
     if "song" in answer:
         respond = "We will play a song,"
@@ -51,22 +60,23 @@ def handle_input(answer):
     elif "do" in answer:
         respond = "Yes.NO!"
     elif "scary" in answer: 
-        respond = playsound("soundclips/movie quotes (sound)/scary.mp3") 
+        playsound("soundclips/movie quotes (sound)/scary.mp3") 
     elif "why" in answer or "look" in answer:
         respond = "i like my privacy"
     elif "how" in answer:
         respond = "hold the phone"
     elif "can" in answer or "we "in answer or"go"in answer:
-        respond =  playsound("soundclips/movie quotes (sound)/adventure.mp3") 
+        playsound("soundclips/movie quotes (sound)/adventure.mp3") 
     elif "best" in answer:
-        respond =playsound("soundclips/movie quotes (sound)/repay.mp3") 
+        playsound("soundclips/movie quotes (sound)/repay.mp3") 
 
     else: 
         respond = random.choice(response)
     
   
     print(respond)
-
+    engine.say(respond)
+    engine.runAndWait()
 # Try using a microphone, else fallback to reading from the console
 try:
     #Setup microphone
