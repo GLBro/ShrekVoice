@@ -4,6 +4,7 @@ import webbrowser
 import speech_recognition as sr
 import pyttsx3
 import datetime
+import os
 
 #Reads the quotes
 response = open("soundclips/shrekquotes", "r").readlines()
@@ -15,8 +16,20 @@ engine.setProperty('volume',1)
 engine.say("Hello There")
 engine.runAndWait()
 
+shreksNo = random.randint(1,100)
 
-def handle_input(answer):
+def game(shreksNo):
+    print("Guess my number!")    
+    closeToShrek = shreksNo-7
+    shreksNo_str = str(shreksNo)
+    guess = input("Guess! ")
+    if guess != shreksNo_str:
+        print("My number is close to " + str(closeToShrek))
+        game(shreksNo)
+    else:
+        print("you win ")
+
+def handle_input(answer, listAnswer):
     respond = '' 
     #Any specific words mentioned trigger a response
     if "song" in answer:
@@ -60,8 +73,7 @@ def handle_input(answer):
         respond = "well its no wonder you have no friends!"
     elif "Could" in answer:
         respond = "NO!"
-    elif "do" in answer:
-        respond = "Yes.NO!"
+
     elif "scary" in answer: 
         playsound("soundclips/movie quotes (sound)/scary.mp3") 
     elif "why" in answer or "look" in answer:
@@ -79,19 +91,61 @@ def handle_input(answer):
     elif "Chrome" in answer:
         webbrowser.open('http://google.co.kr', new=2)
     elif "fan" in answer or "page" in answer:
-        webbrowser.open("http://www.fanpop.com/clubs/shrek", new=2) 
+          webbrowser.open("http://www.fanpop.com/clubs/shrek", new=2) 
     elif "youtube" in answer.lower() or "video" in answer:
-        webbrowser.open("https://www.youtube.com/watch?v=oCij5Kx5av0", new=2) 
-    elif "news" in answer:
-        webbrowser.open("https://www.independent.co.uk/topic/Shrek", new=2) 
+        respond= webbrowser.open("https://www.youtube.com/watch?v=oCij5Kx5av0", new=2) 
+    elif "news" in answer or "america" in answer:
+        respond= webbrowser.open("https://www.youtube.com/watch?v=miDvziCKeI8", new=2) 
     elif "fortnite" in answer:
-        webbrowser.open("https://www.youtube.com/watch?v=C5MUSkfSL5c", new=2) 
+        respond= webbrowser.open("https://www.youtube.com/watch?v=C5MUSkfSL5c", new=2) 
     elif "git" in answer:
         webbrowser.open("https://github.com/GLBro/ShrekVoice/issues ", new=2) 
     elif "time" in answer:
-        respond= datetime.datetime.now()
+         datetime.datetime.now()
+    elif "day" in answer:
+        respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY ", new=2) 
+    elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
+         respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y ", new=2) 
+    elif "see" in answer or "eyes" in answer:
+         respond= webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0 ", new=2) 
+    elif "donkey" in answer:
+         respond= webbrowser.open(" https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2) 
+    elif "dance" in answer:
+          respond= webbrowser.open("https://www.youtube.com/watch?v=SF8fWC7xOJU ", new=2)
+    elif "French" in answer or "learn" in answer:
+         respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2) 
+    elif "stop" in answer:
+          respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg ", new=2) 
+    elif "list" in answer:
+        f= open("list.txt","w+")  
+        print("you said: " + answer)
+        f.write(answer)
+        f.close()
+        
+        respond="your new folder is waiting " 
+
+    elif "add" in answer:
+        f=open("list.txt", "a+")
+        f.write(answer)
+        f.close()  
+
+    elif "agenda" in answer:
+        f= open("list.txt","r")
+        if f.mode == 'r':
+            contents =f.read()  
+            respond = contents
+    
+    elif "delete"in answer:
+
+            os.remove("list.txt")
+            print("File Removed!")   
+
+    elif "game" in answer:
+       game(shreksNo)
+            
+
     else: 
-        respond = random.choice(response)
+        random.choice(response)
     print(respond)
     engine.say(respond)
     engine.runAndWait()
@@ -115,15 +169,16 @@ try:
             try:
                 print('>>> sending to google')
                 answer = r.recognize_google(audio)
+                listAnswer = r.recognize_google(audio)
             except sr.UnknownValueError:
                 print('>>> unknown')
                 continue
             print(answer)
-            handle_input(answer)
+            handle_input(answer, listAnswer)
 except OSError:
     # We couldn't use the microphone as a source
     print('No Microphone, started in Text Mode')
     while True:
         answer = input('> ')
         time.sleep(random.randint(0,3))
-        handle_input(answer)
+        handle_input(answer, listAnswer)
