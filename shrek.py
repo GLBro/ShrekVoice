@@ -60,7 +60,10 @@ def handle_input(answer):
         respond =  playsound("soundclips/movie quotes (sound)/adventure.mp3") 
     elif "best" in answer:
         respond =playsound("soundclips/movie quotes (sound)/repay.mp3") 
-        
+    elif "meme" in answer:
+        respond =  playsound("soundclips/movie quotes (sound)/Shrek meme.mp3") 
+    elif "cat" in answer or "puss in boots" in answer:
+        respond =("soundclips/movie quotes (sound)/kill.mp3")  
     else: 
         respond = random.choice(response)
     
@@ -98,4 +101,3 @@ except OSError:
         answer = input('> ')
         time.sleep(random.randint(0,3))
         handle_input(answer)
-
