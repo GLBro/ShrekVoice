@@ -94,7 +94,7 @@ def handle_input(answer, listAnswer):
           webbrowser.open("http://www.fanpop.com/clubs/shrek", new=2) 
     elif "youtube" in answer.lower() or "video" in answer:
         respond= webbrowser.open("https://www.youtube.com/watch?v=oCij5Kx5av0", new=2) 
-    elif "news" in answer:
+    elif "news" in answer or "america" in answer:
         respond= webbrowser.open("https://www.youtube.com/watch?v=miDvziCKeI8", new=2) 
     elif "fortnite" in answer:
         respond= webbrowser.open("https://www.youtube.com/watch?v=C5MUSkfSL5c", new=2) 
