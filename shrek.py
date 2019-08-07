@@ -44,7 +44,7 @@ def handle_input(answer):
         respond = "could you be quiet for 5 minutes FOR 5 MINUTES"
     elif "dinner" in answer:
         respond = "dead broad.. OFF THE TABLE!"
-    elif "lonley" in answer:
+    elif "lonley" in answer or "name" in answer:
         respond = "well its no wonder you have no friends!"
     elif "Could" in answer:
         respond = "NO!"
