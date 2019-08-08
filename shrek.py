@@ -166,6 +166,7 @@ try:
         while True:
             print('>>> listening')
             audio = r.listen(source)
+            
             try:
                 print('>>> sending to google')
                 answer = r.recognize_google(audio)

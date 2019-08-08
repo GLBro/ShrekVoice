@@ -42,14 +42,18 @@ output.place(x=80, y= 45)
 output.config(font=("Arial", 44),bg="#EDE6E6")
 
 respond = 'hi' 
+word = ''
 
-def handle_input(answer):
+def handle_input(answer, word):
     global output
     global respond
     #Any specific words mentioned trigger a response
     if "song" in answer:
+        word= "song"
         respond = "We will play a song,"
+        setImg(word)
         playsound("soundclips/movie quotes (sound)/song.mp3")
+
     elif "swamp" in answer:
         rad = "Get out of my swamp!", "that would be my home"
         respond = random.choice(rad)
@@ -59,8 +63,10 @@ def handle_input(answer):
         rad = "could you be quiet just FOR 5 MINUTES!", "two things ok?Shut..up"
         respond = random.choice(rad)
     elif "story" in answer: 
-       respond= "Once upon a time, there was a lovely princess. But she had an enchantment upon her of a fearful sort which could only be broken by love's first kiss. She was locked away in a castle guarded by a terrible fire-breathing dragon. Many brave knights had attempted to free her from this dreadful prison, but none prevailed. She waited in the dragon's keep, in the highest room of the tallest tower, for her true love, and true love's first kiss."
-       playsound("soundclips/movie quotes (sound)/storyofshrek.mp3")
+        word = "story"
+        respond= "Once upon a time, there was a lovely princess. But she had an enchantment upon her of a fearful sort which could only be broken by love's first kiss. She was locked away in a castle guarded by a terrible fire-breathing dragon. Many brave knights had attempted to free her from this dreadful prison, but none prevailed. She waited in the dragon's keep, in the highest room of the tallest tower, for her true love, and true love's first kiss."
+        setImg(word)
+        playsound("soundclips/movie quotes (sound)/storyofshrek.mp3")
     elif "remind" in answer:
         respond = "its on my to do list"
     elif "princess" in answer or 'fiona' in answer or "where" in answer:
@@ -104,8 +110,11 @@ def handle_input(answer):
         playsound("soundclips/movie quotes (sound)/repay.mp3")
         respond = '' 
     elif "meme" in answer:
+        word = "meme"
+        setImg(word)
         playsound("soundclips/movie quotes (sound)/Shrek meme.mp3")
         respond = '' 
+        
     elif "cat" in answer or "puss in boots" in answer:
         playsound("soundclips/movie quotes (sound)/kill.mp3")
         respond = ''
@@ -141,7 +150,9 @@ def handle_input(answer):
     elif "dance" in answer:
           respond= webbrowser.open("https://www.youtube.com/watch?v=SF8fWC7xOJU", new=2)
     elif "French" in answer or "learn" in answer:
-         respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2) 
+        word= "french"
+        setImg(word)
+        respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2) 
     elif "stop" in answer:
           respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2)
     elif "list" in answer:
@@ -213,37 +224,35 @@ def activateMic():
                     print('>>> unknown')
                     continue
                 print(answer)
-                handle_input(answer)
+                handle_input(answer, word)
     except OSError:
         # We couldn't use the microphone as a source
     #print('No Microphone, started in Text Mode')
         while True:
             answer = input('> ')
             time.sleep(random.randint(0,3))
-            handle_input(answer)
+            handle_input(answer, word)
 
 
 
 
 
 
-img=1
-path="img"+str(img)+".png" 
+img="shrek"
+#words = "meme", "french", "song","story"
+path = ""
 
 # #bg image
-shrekImage = PhotoImage(file=path)
+shrekImage = PhotoImage(file="shrek.png")
 shreklabel = Label(root, image=shrekImage)
 shreklabel.grid(row=0)
 
 #bg image change
-def setImg():
-    global img
-    global path
-    img+=1
-    path="img"+str(img)+".png" 
+def setImg(word):
+    path=word+"shrek.png" 
     #shrekImage.file=path
     global shrekImage
-    #shrekImage = PhotoImage(file=path)
+    shrekImage = PhotoImage(file=path)
     shreklabel.configure(image=shrekImage)
     
 
@@ -283,7 +292,7 @@ micButton.grid(row=13)
 def MicNotAvailable():
     answer = shrekvoice.get()
     time.sleep(random.randint(0,3))
-    handle_input(answer)
+    handle_input(answer, word)
 b = Button(root, text="enter!", command=MicNotAvailable) #text input button 
 b.grid(row=2)
 
