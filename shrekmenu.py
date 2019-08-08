@@ -144,23 +144,23 @@ def handle_input(answer, word):
         label = datetime.datetime.now().strftime('its %A the %dth of %B %Y and the time is %I:%M %p')
         respond = datetime.datetime.now().strftime('its %A the %dthe of %B %Y and the time is %I:%M %p')
     elif "day" in answer:
-        respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2)
+         webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2)
     elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
          word = "music"
          setImg(word)
-         respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
+         webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
     elif "see" in answer or "eyes" in answer:
-         respond= webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2) 
+         webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2) 
     elif "donkey" in answer:
-         respond= webbrowser.open("https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2) 
+         webbrowser.open("https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2) 
     elif "dance" in answer:
-          respond= webbrowser.open("https://www.youtube.com/watch?v=SF8fWC7xOJU", new=2)
+          webbrowser.open("https://www.youtube.com/watch?v=SF8fWC7xOJU", new=2)
     elif "French" in answer or "learn" in answer:
         word= "french"
         setImg(word)
-        respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2) 
+        webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2) 
     elif "stop" in answer:
-          respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2)
+          webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2)
     elif "list" in answer:
         f= open("list.txt","w+")  
         print("you said: " + answer)
