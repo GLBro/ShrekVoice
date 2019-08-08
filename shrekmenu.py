@@ -41,12 +41,8 @@ output = Label(text='') #prints value of 'respond' variable to the label!
 output.place(x=80, y= 45)
 output.config(font=("Arial", 44),bg="#EDE6E6")
 
-<<<<<<< HEAD
-#terms = "easy","complex","tasty","low","calories","healthy","savoury"
-=======
 respond = 'hi' 
 word = ''
->>>>>>> f1a30322180f6128be40ebb2b7cd6c1400a13b2d
 
 def handle_input(answer, word):
     global output
@@ -162,7 +158,6 @@ def handle_input(answer, word):
         label = datetime.datetime.now().strftime('its %A the %dth of %B %Y and the time is %I:%M %p')
         respond = datetime.datetime.now().strftime('its %A the %dthe of %B %Y and the time is %I:%M %p')
     elif "day" in answer:
-<<<<<<< HEAD
         respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
     #or "shreksophone" in answer or "instrument" in answer:
     elif "music" in answer:
@@ -174,15 +169,6 @@ def handle_input(answer, word):
          #respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
     elif "see" in answer or "eyes" in answer:
            respond= webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2) 
-=======
-         webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2)
-    elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
-         word = "music"
-         setImg(word)
-         webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
-    elif "see" in answer or "eyes" in answer:
-         webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2) 
->>>>>>> f1a30322180f6128be40ebb2b7cd6c1400a13b2d
     elif "donkey" in answer:
          webbrowser.open("https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2) 
     elif "dance" in answer:
