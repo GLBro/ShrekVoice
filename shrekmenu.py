@@ -46,7 +46,8 @@ word = ''
 
 def handle_input(answer, word):
     global output
-    global respond
+    respond = 'hi'
+    label = ''
     #Any specific words mentioned trigger a response
     if "song" in answer:
         word= "song"
@@ -64,8 +65,8 @@ def handle_input(answer, word):
         respond = random.choice(rad)
     elif "story" in answer: 
         word = "story"
-        respond= "Once upon a time, there was a lovely princess. But she had an enchantment upon her of a fearful sort which could only be broken by love's first kiss. She was locked away in a castle guarded by a terrible fire-breathing dragon. Many brave knights had attempted to free her from this dreadful prison, but none prevailed. She waited in the dragon's keep, in the highest room of the tallest tower, for her true love, and true love's first kiss."
         setImg(word)
+        respond= "Once upon a time, there was a lovely princess. But she had an enchantment upon her of a fearful sort which could only be broken by love's first kiss. She was locked away in a castle guarded by a terrible fire-breathing dragon. Many brave knights had attempted to free her from this dreadful prison, but none prevailed. She waited in the dragon's keep, in the highest room of the tallest tower, for her true love, and true love's first kiss."
         playsound("soundclips/movie quotes (sound)/storyofshrek.mp3")
     elif "remind" in answer:
         respond = "its on my to do list"
@@ -139,6 +140,9 @@ def handle_input(answer, word):
     elif "time" in answer:
         respond= datetime.datetime.now()
         respond = str(respond)
+        #print(datetime.datetime.now().strftime('its %A the %dth of %B %Y and the time is %I:%M %p'))
+        label = datetime.datetime.now().strftime('its %A the %dth of %B %Y and the time is %I:%M %p')
+        respond = datetime.datetime.now().strftime('its %A the %dthe of %B %Y and the time is %I:%M %p')
     elif "day" in answer:
         respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
     elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
@@ -189,7 +193,7 @@ def handle_input(answer, word):
     if textsize < 15:
         textsize = 20
     output.destroy()
-    output = Label(text=respond) #prints value of 'respond' variable to the label!
+    output = Label(text=label or respond) #prints value of 'respond' variable to the label!
     output.place(x=60, y= 45)
     output.config(font=("Arial", int(textsize)),bg="#EDE6E6", wraplength=350)
     root.update()
@@ -239,7 +243,6 @@ def activateMic():
 
 
 img="shrek"
-#words = "meme", "french", "song","story"
 path = ""
 
 # #bg image
@@ -270,7 +273,7 @@ speechlabel = Label(root, image=speechImage)
 speechlabel.place(x=0, y=0)
 
 #response
-output = Label(text=respond) #prints value of 'respond' variable to the label!
+output = Label(text='hi') #prints value of 'respond' variable to the label!
 output.place(x=80, y= 45)
 output.config(font=("Arial", 44),bg="#EDE6E6")
 
