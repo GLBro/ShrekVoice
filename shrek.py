@@ -99,23 +99,23 @@ def handle_input(answer, listAnswer):
     elif "fortnite" in answer:
         respond= webbrowser.open("https://www.youtube.com/watch?v=C5MUSkfSL5c", new=2) 
     elif "git" in answer:
-        respond= webbrowser.open("https://github.com/GLBro/ShrekVoice/issues ", new=2) 
+        respond= webbrowser.open("https://github.com/GLBro/ShrekVoice/issues", new=2) 
     elif "time" in answer:
          datetime.datetime.now()
     elif "day" in answer:
-        respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY ", new=2) 
+        respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
     elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
          respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y ", new=2) 
     elif "see" in answer or "eyes" in answer:
          respond= webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0 ", new=2) 
     elif "donkey" in answer:
-         respond= webbrowser.open(" https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2) 
+         respond= webbrowser.open("https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2) 
     elif "dance" in answer:
-          respond= webbrowser.open("https://www.youtube.com/watch?v=SF8fWC7xOJU ", new=2)
+          respond= webbrowser.open("https://www.youtube.com/watch?v=SF8fWC7xOJU", new=2)
     elif "French" in answer or "learn" in answer:
          respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2) 
     elif "stop" in answer:
-          respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg ", new=2) 
+          respond= webbrowser.open("https://www.youtube.com/watch?v=mseMvvgp86c", new=2) 
     elif "list" in answer:
         f= open("list.txt","w+")  
         print("you said: " + answer)
