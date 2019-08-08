@@ -41,11 +41,11 @@ output = Label(text='') #prints value of 'respond' variable to the label!
 output.place(x=80, y= 45)
 output.config(font=("Arial", 44),bg="#EDE6E6")
 
-respond = 'hi' 
 
 def handle_input(answer):
     global output
-    global respond
+    respond = 'hi'
+    label = ''
     #Any specific words mentioned trigger a response
     if "song" in answer:
         respond = "We will play a song,"
@@ -130,6 +130,9 @@ def handle_input(answer):
     elif "time" in answer:
         respond= datetime.datetime.now()
         respond = str(respond)
+        #print(datetime.datetime.now().strftime('its %A the %dth of %B %Y and the time is %I:%M %p'))
+        label = datetime.datetime.now().strftime('its %A the %dth of %B %Y and the time is %I:%M %p')
+        respond = datetime.datetime.now().strftime('its %A the %dthe of %B %Y and the time is %I:%M %p')
     elif "day" in answer:
         respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
     elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
@@ -178,7 +181,7 @@ def handle_input(answer):
     if textsize < 15:
         textsize = 20
     output.destroy()
-    output = Label(text=respond) #prints value of 'respond' variable to the label!
+    output = Label(text=label or respond) #prints value of 'respond' variable to the label!
     output.place(x=60, y= 45)
     output.config(font=("Arial", int(textsize)),bg="#EDE6E6", wraplength=350)
     root.update()
@@ -261,7 +264,7 @@ speechlabel = Label(root, image=speechImage)
 speechlabel.place(x=0, y=0)
 
 #response
-output = Label(text=respond) #prints value of 'respond' variable to the label!
+output = Label(text='hi') #prints value of 'respond' variable to the label!
 output.place(x=80, y= 45)
 output.config(font=("Arial", 44),bg="#EDE6E6")
 
