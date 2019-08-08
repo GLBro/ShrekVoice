@@ -9,6 +9,8 @@ import pyttsx3
 import datetime
 import os
 
+
+
 #--------------UI-----------------#
 root = Tk()
 root.title("Shrek chat box")
@@ -185,6 +187,62 @@ def handle_input(answer, word):
 
     elif "game" in answer:
        game(shreksNo)
+
+    #Weather takes Postcode
+    elif 'weather' in answer:
+        checkweather = re.findall(r'what is the weather in (.*)', answer)
+        if len(checkweather) > 0:
+            place = checkweather[0]
+            place = place.lower()
+            webbrowser.open("https://www.bbc.co.uk/weather/" + place, new=2)
+            respond = 'The weather at ' + place.upper() + ' can be found on BBC Weather'
+        else:
+            respond = 'No location found'
+    
+    elif 'joke' in answer:
+        rad = '1', '2', '3', '4'
+        sayjoke = random.choice(rad)
+        if sayjoke == '1':
+            output.destroy()
+            output = Label(text='Why was gingy robbed?') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('Why was gingy robbed?')
+            engine.runAndWait()
+            respond = 'Because of his dough!'
+        if sayjoke == '2':
+            output.destroy()
+            output = Label(text='What does shrek use to open his door') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('What does shrek use to open his door')
+            engine.runAndWait()
+            respond = 'A don-key!'
+        if sayjoke == '3':
+            output.destroy()
+            output = Label(text='What\'s donkeys favourite film') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('What\'s donkeys favourite film')
+            engine.runAndWait()
+            respond = 'Star Shrek!'
+        if sayjoke == '4':
+            output.destroy()
+            output = Label(text='What did shrek propose to fiona with?') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('What did shrek propose to fiona with?')
+            engine.runAndWait()
+            respond = 'An onion ring!'
+        
+
+
+
+
     else: 
         respond = random.choice(response)
     respond = respond.rstrip()
