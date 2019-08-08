@@ -129,6 +129,7 @@ def handle_input(answer):
         respond = '' 
     elif "time" in answer:
         respond= datetime.datetime.now()
+        respond = str(respond)
     elif "day" in answer:
         respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
     elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
