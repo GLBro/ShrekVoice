@@ -1,5 +1,6 @@
 from tkinter import *
 #from PIL import Image, ImageTk
+from tkinter.ttk import Progressbar
 
 import random,time
 from playsound import playsound
@@ -13,6 +14,36 @@ import os
 root = Tk()
 root.title("Shrek chat box")
 root.resizable(False, False)
+root.withdraw()
+
+start_window = Toplevel(root)
+start_window.title("Shrek Chat Box 2019")
+start_window.resizable(False, False)
+start_window.protocol("WM_DELETE_WINDOW", lambda : root.destroy()) # close app when start window closes manually, as it's not root
+
+loadingImage = PhotoImage(file="loadingscreen.png")
+loadingLabel = Label(start_window, image=loadingImage)
+loadingLabel.grid(row=3)
+
+progress=Progressbar(start_window,orient=HORIZONTAL,length=1000,mode='determinate')
+progress.grid(row=8)
+progress['value']=0
+
+loadingLabel = Label(start_window, text='')
+loadingLabel.grid(row=5)
+
+def start_main():
+    while progress['value'] < 99:
+        progress.step()
+        loadingLabel.config(text = ('Loading' + ((int(progress['value']/4) % 3) + 1) * '.'))
+        root.update_idletasks()
+        time.sleep(0.040)
+    start_window.destroy()
+    root.deiconify()
+
+startButton = Button(start_window, text="Start", command=start_main)
+startButton.grid(row=4)
+
 
 #Reads the quotes
 response = open("soundclips/shrekquotes", "r").readlines()
@@ -252,6 +283,9 @@ shrekImage = PhotoImage(file="shrek.png")
 shreklabel = Label(root, image=shrekImage)
 shreklabel.grid(row=0)
 
+
+
+
 #bg image change
 def setImg(word):
     path=word+"shrek.png" 
@@ -259,14 +293,6 @@ def setImg(word):
     global shrekImage
     shrekImage = PhotoImage(file=path)
     shreklabel.configure(image=shrekImage)
-    
-
-#func for text input
-def buttonFunction():
-    global img
-    global path
-    #setImg()
-
 
 
 #speech bubble
