@@ -1,5 +1,6 @@
 from tkinter import *
 #from PIL import Image, ImageTk
+from tkinter.ttk import Progressbar
 
 import random,time
 from playsound import playsound
@@ -15,6 +16,36 @@ import os
 root = Tk()
 root.title("Shrek chat box")
 root.resizable(False, False)
+root.withdraw()
+
+start_window = Toplevel(root)
+start_window.title("Shrek Chat Box 2019")
+start_window.resizable(False, False)
+start_window.protocol("WM_DELETE_WINDOW", lambda : root.destroy()) # close app when start window closes manually, as it's not root
+
+loadingImage = PhotoImage(file="loadingscreen.png")
+loadingLabel = Label(start_window, image=loadingImage)
+loadingLabel.grid(row=3)
+
+progress=Progressbar(start_window,orient=HORIZONTAL,length=1000,mode='determinate')
+progress.grid(row=8)
+progress['value']=0
+
+loadingLabel = Label(start_window, text='')
+loadingLabel.grid(row=5)
+
+def start_main():
+    while progress['value'] < 99:
+        progress.step()
+        loadingLabel.config(text = ('Loading' + ((int(progress['value']/4) % 3) + 1) * '.'))
+        root.update_idletasks()
+        time.sleep(0.040)
+    start_window.destroy()
+    root.deiconify()
+
+startButton = Button(start_window, text="Start", command=start_main)
+startButton.grid(row=4)
+
 
 #Reads the quotes
 response = open("soundclips/shrekquotes", "r").readlines()
@@ -43,6 +74,7 @@ output = Label(text='') #prints value of 'respond' variable to the label!
 output.place(x=80, y= 45)
 output.config(font=("Arial", 44),bg="#EDE6E6")
 
+#terms = "easy","complex","tasty","low","calories","healthy","savoury"
 respond = 'hi' 
 word = ''
 
@@ -53,7 +85,7 @@ def handle_input(answer, word):
     #Any specific words mentioned trigger a response
     if "song" in answer:
         word= "song"
-        respond = "We will play a song,"
+        respond = "we just played all star by smash mouth."
         setImg(word)
         playsound("soundclips/movie quotes (sound)/song.mp3")
 
@@ -93,12 +125,10 @@ def handle_input(answer, word):
         respond = "could you be quiet for 5 minutes FOR 5 MINUTES"
     elif "dinner" in answer:
         respond = "dead broad.. OFF THE TABLE!"
-    elif "lonley" in answer or "name" in answer:
+    elif "lonely" in answer or "name" in answer:
         respond = "well its no wonder you have no friends!"
     elif "Could" in answer:
         respond = "NO!"
-    elif "do" in answer:
-        respond = "Yes.NO!"
     elif "scary" in answer: 
         playsound("soundclips/movie quotes (sound)/scary.mp3") 
         respond = ''
@@ -138,7 +168,23 @@ def handle_input(answer, word):
         respond = '' 
     elif "git" in answer:
         webbrowser.open("https://github.com/GLBro/ShrekVoice/issues ", new=2)
-        respond = '' 
+    
+    elif "recipe" in answer:
+        
+        recipeToGet = answer.split()[-5:]
+        recipeToGet_str = ' '.join(recipeToGet)
+        print(recipeToGet_str)
+        #countFor = recipeToGet_str.count("for")
+        search=recipeToGet_str
+        # if answer in terms:
+        #      recipeAdj = terms[1]
+        #      search = recipeAdj + search
+        # if "for" in recipeToGet_str:
+        #     search = "Recipe " +  recipeToGet_str 
+        # else:
+        #     search = "Recipe for " +  recipeToGet_str 
+        respond = webbrowser.open(search , new=2)
+
     elif "time" in answer:
         respond= datetime.datetime.now()
         respond = str(respond)
@@ -146,11 +192,20 @@ def handle_input(answer, word):
         label = datetime.datetime.now().strftime('its %A the %dth of %B %Y and the time is %I:%M %p')
         respond = datetime.datetime.now().strftime('its %A the %dthe of %B %Y and the time is %I:%M %p')
     elif "day" in answer:
-        webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
-    elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
-        webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
+        respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
+    #or "shreksophone" in answer or "instrument" in answer:
+    elif "music" in answer:
+        musicToGet = answer.split()[-2:]
+        #musicToGet_str = ' '.join(musicToGet)
+        search="https://www.youtube.com/results?search_query="+musicToGet[0]+" "+musicToGet[1]
+        respond = webbrowser.open(search , new=2)
+        respond = 'Playing Music'
+        if musicToGet[0] == None:
+            respond = 'Unavailable'
+
+         #respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
     elif "see" in answer or "eyes" in answer:
-         webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2) 
+           respond= webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2) 
     elif "donkey" in answer:
          webbrowser.open("https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2) 
     elif "dance" in answer:
@@ -243,6 +298,9 @@ def handle_input(answer, word):
 
 
 
+    
+    # elif "playlist" in answer:
+    #     #respond= 
     else: 
         respond = random.choice(response)
     respond = respond.rstrip()
@@ -308,6 +366,9 @@ shrekImage = PhotoImage(file="shrek.png")
 shreklabel = Label(root, image=shrekImage)
 shreklabel.grid(row=0)
 
+
+
+
 #bg image change
 def setImg(word):
     path=word+"shrek.png" 
@@ -315,14 +376,6 @@ def setImg(word):
     global shrekImage
     shrekImage = PhotoImage(file=path)
     shreklabel.configure(image=shrekImage)
-    
-
-#func for text input
-def buttonFunction():
-    global img
-    global path
-    #setImg()
-
 
 
 #speech bubble
