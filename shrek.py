@@ -16,7 +16,7 @@ engine.setProperty('volume',1)
 engine.say("Hello There")
 engine.runAndWait()
 
-shreksNo = random.randint(1,100)
+'''shreksNo = random.randint(1,100)
 
 def game(shreksNo):
     print("Guess my number!")    
@@ -27,7 +27,7 @@ def game(shreksNo):
         print("My number is close to " + str(closeToShrek))
         game(shreksNo)
     else:
-        print("you win ")
+        print("you win ")'''
 
 def handle_input(answer, listAnswer):
     respond = '' 
@@ -102,7 +102,7 @@ def handle_input(answer, listAnswer):
         webbrowser.open("https://github.com/GLBro/ShrekVoice/issues ", new=2) 
     elif "time" in answer:
          datetime.datetime.now()
-    elif "day" in answer:
+    '''elif "day" in answer:
         respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY ", new=2) 
     elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
          respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y ", new=2) 
@@ -115,8 +115,8 @@ def handle_input(answer, listAnswer):
     elif "French" in answer or "learn" in answer:
          respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2) 
     elif "stop" in answer:
-          respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg ", new=2) 
-    elif "list" in answer:
+          respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg ", new=2) '''
+    '''elif "list" in answer:
         f= open("list.txt","w+")  
         print("you said: " + answer)
         f.write(answer)
@@ -148,7 +148,7 @@ def handle_input(answer, listAnswer):
         random.choice(response)
     print(respond)
     engine.say(respond)
-    engine.runAndWait()
+    engine.runAndWait()'''
 # Try using a microphone, else fallback to reading from the console
 try:
 

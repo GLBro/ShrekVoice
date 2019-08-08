@@ -19,10 +19,23 @@ response = open("soundclips/shrekquotes", "r").readlines()
 
 #Sets ups text to speech
 engine = pyttsx3.init()
-engine.setProperty('rate', 110) 
+engine.setProperty('rate', 115) 
 engine.setProperty('volume',1)
 engine.say("Hello There")
 engine.runAndWait()
+
+shreksNo = random.randint(1,100)
+
+def game(shreksNo):
+    print("Guess my number!")    
+    closeToShrek = shreksNo-7
+    shreksNo_str = str(shreksNo)
+    guess = input("Guess! ")
+    if guess != shreksNo_str:
+        print("My number is close to " + str(closeToShrek))
+        game(shreksNo)
+    else:
+        print("you win ")
 
 output = Label(text='') #prints value of 'respond' variable to the label!
 output.place(x=80, y= 45)
@@ -46,8 +59,8 @@ def handle_input(answer):
         rad = "could you be quiet just FOR 5 MINUTES!", "two things ok?Shut..up"
         respond = random.choice(rad)
     elif "story" in answer: 
-       playsound("soundclips/movie quotes (sound)/storyofshrek.mp3")
        respond= "Once upon a time, there was a lovely princess. But she had an enchantment upon her of a fearful sort which could only be broken by love's first kiss. She was locked away in a castle guarded by a terrible fire-breathing dragon. Many brave knights had attempted to free her from this dreadful prison, but none prevailed. She waited in the dragon's keep, in the highest room of the tallest tower, for her true love, and true love's first kiss."
+       playsound("soundclips/movie quotes (sound)/storyofshrek.mp3")
     elif "remind" in answer:
         respond = "its on my to do list"
     elif "princess" in answer or 'fiona' in answer or "where" in answer:
@@ -116,14 +129,57 @@ def handle_input(answer):
         respond = '' 
     elif "time" in answer:
         respond= datetime.datetime.now()
+    elif "day" in answer:
+        respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
+    elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
+         respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
+    elif "see" in answer or "eyes" in answer:
+         respond= webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2) 
+    elif "donkey" in answer:
+         respond= webbrowser.open("https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2) 
+    elif "dance" in answer:
+          respond= webbrowser.open("https://www.youtube.com/watch?v=SF8fWC7xOJU", new=2)
+    elif "French" in answer or "learn" in answer:
+         respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2) 
+    elif "stop" in answer:
+          respond= webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2)
+    elif "list" in answer:
+        f= open("list.txt","w+")  
+        print("you said: " + answer)
+        f.write(answer)
+        f.close()
+        
+        respond="your new folder is waiting " 
+
+    elif "add" in answer:
+        f=open("list.txt", "a+")
+        f.write(answer)
+        f.close()  
+
+    elif "agenda" in answer:
+        f= open("list.txt","r")
+        if f.mode == 'r':
+            contents =f.read()  
+            respond = contents
+    
+    elif "delete"in answer:
+
+            os.remove("list.txt")
+            print("File Removed!")   
+
+    elif "game" in answer:
+       game(shreksNo)
     else: 
         respond = random.choice(response)
     respond = respond.rstrip()
     print(respond)
+    textsize = 50 - len(respond)
+    if textsize < 15:
+        textsize = 20
     output.destroy()
     output = Label(text=respond) #prints value of 'respond' variable to the label!
-    output.place(x=75, y= 45)
-    output.config(font=("Arial", 25),bg="#EDE6E6")
+    output.place(x=60, y= 45)
+    output.config(font=("Arial", int(textsize)),bg="#EDE6E6", wraplength=350)
     root.update()
     # import pdb; pdb.set_trace()
 
