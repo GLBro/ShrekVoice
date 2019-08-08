@@ -51,7 +51,7 @@ def handle_input(answer, word):
     #Any specific words mentioned trigger a response
     if "song" in answer:
         word= "song"
-        respond = "We will play a song,"
+        respond = "we just played all star by smash mouth."
         setImg(word)
         playsound("soundclips/movie quotes (sound)/song.mp3")
 
@@ -144,8 +144,10 @@ def handle_input(answer, word):
         label = datetime.datetime.now().strftime('its %A the %dth of %B %Y and the time is %I:%M %p')
         respond = datetime.datetime.now().strftime('its %A the %dthe of %B %Y and the time is %I:%M %p')
     elif "day" in answer:
-        respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
+        respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2)
     elif "music" in answer or "shreksophone" in answer or "instrument" in answer:
+         word = "music"
+         setImg(word)
          respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
     elif "see" in answer or "eyes" in answer:
          respond= webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2) 
