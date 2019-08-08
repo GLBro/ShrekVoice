@@ -16,7 +16,7 @@ engine.setProperty('volume',1)
 engine.say("Hello There")
 engine.runAndWait()
 
-shreksNo = random.randint(1,100)
+'''shreksNo = random.randint(1,100)
 
 def game(shreksNo):
     print("Guess my number!")    
@@ -27,7 +27,7 @@ def game(shreksNo):
         print("My number is close to " + str(closeToShrek))
         game(shreksNo)
     else:
-        print("you win ")
+        print("you win ")'''
 
 def handle_input(answer, listAnswer):
     respond = '' 
@@ -44,7 +44,7 @@ def handle_input(answer, listAnswer):
         rad = "could you be quiet just FOR 5 MINUTES!", "two things ok?Shut..up"
         respond = random.choice(rad)
     elif "story" in answer: 
-       respond= playsound("soundclips/movie quotes (sound)/storyofshrek.mp3")
+       playsound("soundclips/movie quotes (sound)/storyofshrek.mp3")
        respond= "Once upon a time, there was a lovely princess. But she had an enchantment upon her of a fearful sort which could only be broken by love's first kiss. She was locked away in a castle guarded by a terrible fire-breathing dragon. Many brave knights had attempted to free her from this dreadful prison, but none prevailed. She waited in the dragon's keep, in the highest room of the tallest tower, for her true love, and true love's first kiss."
     elif "remind" in answer:
         respond = "its on my to do list"
@@ -61,7 +61,7 @@ def handle_input(answer, listAnswer):
     elif "sad" in answer:
         respond = "oh would you look at that!"
     elif "house" in answer:
-        respond = playsound ("soundclips/movie quotes (sound)/location.mp3") 
+        playsound ("soundclips/movie quotes (sound)/location.mp3") 
         respond = "sure it big enough...but look at the location!"
     elif "animal" in answer:
         respond = "its just a donkey"
@@ -85,11 +85,11 @@ def handle_input(answer, listAnswer):
     elif "best" in answer:
         playsound("soundclips/movie quotes (sound)/repay.mp3") 
     elif "meme" in answer:
-        respond =  playsound("soundclips/movie quotes (sound)/Shrek meme.mp3") 
+        playsound("soundclips/movie quotes (sound)/Shrek meme.mp3") 
     elif "cat" in answer or "puss in boots" in answer:
-        respond = playsound("soundclips/movie quotes (sound)/kill.mp3")
+        playsound("soundclips/movie quotes (sound)/kill.mp3")
     elif "Chrome" in answer:
-        respond = webbrowser.open('http://google.co.kr', new=2)
+        webbrowser.open('http://google.co.kr', new=2)
     elif "fan" in answer or "page" in answer:
           webbrowser.open("http://www.fanpop.com/clubs/shrek", new=2) 
     elif "youtube" in answer.lower() or "video" in answer:
