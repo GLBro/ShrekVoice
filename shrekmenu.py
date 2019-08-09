@@ -269,10 +269,10 @@ def handle_input(answer, word):
             root.update()
             engine.say('No location found')
             engine.runAndWait()
-            respond = 'To check the weather you must type \'what is the weather in (postcode)'
+            respond = 'To check the weather you must type \'what is the weather in (postcode)\''
     
     elif 'joke' in answer:
-        rad = '1', '2', '3', '4'
+        rad = '1', '2', '3', '4', '5'
         sayjoke = random.choice(rad)
         if sayjoke == '1':
             output.destroy()
@@ -310,6 +310,8 @@ def handle_input(answer, word):
             engine.say('What did shrek propose to fiona with?')
             engine.runAndWait()
             respond = 'An onion ring!'
+        if sayjoke == '5':
+            respond = 'YOU ARE A JOKE!'
         
 
 
