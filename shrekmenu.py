@@ -199,15 +199,15 @@ def handle_input(answer, word):
         respond = '' 
     #or "shreksophone" in answer or "instrument" in answer:
     elif "music" in answer:
-        musicToGet = answer.split()[-2:]
-        #musicToGet_str = ' '.join(musicToGet)
-        search="https://www.youtube.com/results?search_query="+musicToGet[0]+" "+musicToGet[1]
-        webbrowser.open(search , new=2)
-        respond = 'Playing Music'
-        if musicToGet[0] == None:
-            respond = 'Unavailable'
-
-         #respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
+        musicToGet = answer.split()
+        if len(musicToGet) >= 2:
+            musicToGet = musicToGet[-2:]
+            #musicToGet_str = ' '.join(musicToGet)
+            search="https://www.youtube.com/results?search_query="+musicToGet[0]+" "+musicToGet[1]
+            webbrowser.open(search , new=2)
+            respond = 'Playing Music'
+        else:
+            webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
     elif "see" in answer or "eyes" in answer:
            webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2)
            respond = ''
