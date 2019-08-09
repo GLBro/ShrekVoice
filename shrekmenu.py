@@ -131,41 +131,41 @@ def handle_input(answer, word):
         respond = "NO!"
     elif "scary" in answer: 
         playsound("soundclips/movie quotes (sound)/scary.mp3") 
-        respond = ''
+        respond = 'scary!'
     elif "why" in answer or "look" in answer:
         respond = "i like my privacy"
     elif "how" in answer:
         respond = "hold the phone"
     elif "can" in answer or "we "in answer or"go"in answer:
         playsound("soundclips/movie quotes (sound)/adventure.mp3")
-        respond = ''
+        respond = 'quest time!!!'
     elif "best" in answer:
         playsound("soundclips/movie quotes (sound)/repay.mp3")
-        respond = '' 
+        respond = 'thanks!' 
     elif "meme" in answer:
         word = "meme"
         setImg(word)
         playsound("soundclips/movie quotes (sound)/Shrek meme.mp3")
-        respond = '' 
+        respond = 'i am love,i am life!' 
         
     elif "cat" in answer or "puss in boots" in answer:
         playsound("soundclips/movie quotes (sound)/kill.mp3")
-        respond = ''
+        respond = 'puss in boots!'
     elif "Chrome" in answer:
         webbrowser.open('http://google.co.kr', new=2)
-        respond = ''
+        respond = 'chrome has now been opened'
     elif "fan" in answer or "page" in answer:
         webbrowser.open("http://www.fanpop.com/clubs/shrek", new=2)
-        respond = ''
+        respond = 'i have a fan page!'
     elif "youtube" in answer.lower() or "video" in answer:
         webbrowser.open("https://www.youtube.com/watch?v=oCij5Kx5av0", new=2)
-        respond = '' 
+        respond = 'hahah' 
     elif "news" in answer:
         webbrowser.open("https://www.independent.co.uk/topic/Shrek", new=2)
-        respond = '' 
+        respond = 'swamp talk!' 
     elif "fortnite" in answer:
         webbrowser.open("https://www.youtube.com/watch?v=C5MUSkfSL5c", new=2)
-        respond = '' 
+        respond = 'fortnite rules!' 
     elif "git" in answer:
         webbrowser.open("https://github.com/GLBro/ShrekVoice/issues ", new=2)
         respond = ''
