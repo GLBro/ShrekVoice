@@ -260,7 +260,14 @@ def handle_input(answer, word):
             webbrowser.open("https://www.bbc.co.uk/weather/" + place, new=2)
             respond = 'The weather at ' + place.upper() + ' can be found on BBC Weather'
         else:
-            respond = 'No location found'
+            output.destroy()
+            output = Label(text='No location found') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('No location found')
+            engine.runAndWait()
+            respond = 'To check the weather you must type \'what is the weather in (postcode)'
     
     elif 'joke' in answer:
         rad = '1', '2', '3', '4'
