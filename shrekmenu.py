@@ -1,5 +1,6 @@
 from tkinter import *
 #from PIL import Image, ImageTk
+from tkinter.ttk import Progressbar
 
 import random,time
 from playsound import playsound
@@ -9,10 +10,42 @@ import pyttsx3
 import datetime
 import os
 
+
+
 #--------------UI-----------------#
 root = Tk()
 root.title("Shrek chat box")
 root.resizable(False, False)
+root.withdraw()
+
+start_window = Toplevel(root)
+start_window.title("Shrek Chat Box 2019")
+start_window.resizable(False, False)
+start_window.protocol("WM_DELETE_WINDOW", lambda : root.destroy()) # close app when start window closes manually, as it's not root
+
+loadingImage = PhotoImage(file="loadingscreen.png")
+loadingLabel = Label(start_window, image=loadingImage)
+loadingLabel.grid(row=3)
+
+progress=Progressbar(start_window,orient=HORIZONTAL,length=1000,mode='determinate')
+progress.grid(row=8)
+progress['value']=0
+
+loadingLabel = Label(start_window, text='')
+loadingLabel.grid(row=5)
+
+def start_main():
+    while progress['value'] < 99:
+        progress.step()
+        loadingLabel.config(text = ('Loading' + ((int(progress['value']/4) % 3) + 1) * '.'))
+        root.update_idletasks()
+        time.sleep(0.040)
+    start_window.destroy()
+    root.deiconify()
+
+startButton = Button(start_window, text="Start", command=start_main)
+startButton.grid(row=4)
+
 
 #Reads the quotes
 response = open("soundclips/shrekquotes", "r").readlines()
@@ -41,6 +74,10 @@ output = Label(text='') #prints value of 'respond' variable to the label!
 output.place(x=80, y= 45)
 output.config(font=("Arial", 44),bg="#EDE6E6")
 
+<<<<<<< HEAD
+=======
+#terms = "easy","complex","tasty","low","calories","healthy","savoury"
+>>>>>>> f25ad9b71fff1f12a10341352c12c32bfa0e4bfe
 respond = 'hi' 
 word = ''
 
@@ -165,6 +202,9 @@ def handle_input(answer, word):
         #musicToGet_str = ' '.join(musicToGet)
         search="https://www.youtube.com/results?search_query="+musicToGet[0]+" "+musicToGet[1]
         respond = webbrowser.open(search , new=2)
+        respond = 'Playing Music'
+        if musicToGet[0] == None:
+            respond = 'Unavailable'
 
          #respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
     elif "see" in answer or "eyes" in answer: respond=
@@ -205,6 +245,62 @@ def handle_input(answer, word):
 
     elif "game" in answer:
        game(shreksNo)
+
+    #Weather takes Postcode
+    elif 'weather' in answer:
+        checkweather = re.findall(r'what is the weather in (.*)', answer)
+        if len(checkweather) > 0:
+            place = checkweather[0]
+            place = place.lower()
+            webbrowser.open("https://www.bbc.co.uk/weather/" + place, new=2)
+            respond = 'The weather at ' + place.upper() + ' can be found on BBC Weather'
+        else:
+            respond = 'No location found'
+    
+    elif 'joke' in answer:
+        rad = '1', '2', '3', '4'
+        sayjoke = random.choice(rad)
+        if sayjoke == '1':
+            output.destroy()
+            output = Label(text='Why was gingy robbed?') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('Why was gingy robbed?')
+            engine.runAndWait()
+            respond = 'Because of his dough!'
+        if sayjoke == '2':
+            output.destroy()
+            output = Label(text='What does shrek use to open his door') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('What does shrek use to open his door')
+            engine.runAndWait()
+            respond = 'A don-key!'
+        if sayjoke == '3':
+            output.destroy()
+            output = Label(text='What\'s donkeys favourite film') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('What\'s donkeys favourite film')
+            engine.runAndWait()
+            respond = 'Star Shrek!'
+        if sayjoke == '4':
+            output.destroy()
+            output = Label(text='What did shrek propose to fiona with?') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('What did shrek propose to fiona with?')
+            engine.runAndWait()
+            respond = 'An onion ring!'
+        
+
+
+
+
     
     # elif "playlist" in answer:
     #     #respond= 
@@ -273,6 +369,9 @@ shrekImage = PhotoImage(file="shrek.png")
 shreklabel = Label(root, image=shrekImage)
 shreklabel.grid(row=0)
 
+
+
+
 #bg image change
 def setImg(word):
     path=word+"shrek.png" 
@@ -280,14 +379,6 @@ def setImg(word):
     global shrekImage
     shrekImage = PhotoImage(file=path)
     shreklabel.configure(image=shrekImage)
-    
-
-#func for text input
-def buttonFunction():
-    global img
-    global path
-    #setImg()
-
 
 
 #speech bubble
