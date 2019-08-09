@@ -54,8 +54,7 @@ response = open("soundclips/shrekquotes", "r").readlines()
 engine = pyttsx3.init()
 engine.setProperty('rate', 115) 
 engine.setProperty('volume',1)
-engine.say("Hello There")
-engine.runAndWait()
+playsound("soundclips/movie quotes (sound)/hellothere.mp3")
 
 shreksNo = random.randint(1,100)
 
@@ -218,7 +217,7 @@ def handle_input(answer, word):
     elif "dance" in answer:
           webbrowser.open("https://www.youtube.com/watch?v=SF8fWC7xOJU", new=2)
           respond = ''
-    elif "French" in answer or "learn" in answer:
+    elif "french" in answer.lower() or "learn" in answer:
         word= "french"
         setImg(word)
         webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2)
