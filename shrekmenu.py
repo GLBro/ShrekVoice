@@ -74,10 +74,7 @@ output = Label(text='') #prints value of 'respond' variable to the label!
 output.place(x=80, y= 45)
 output.config(font=("Arial", 44),bg="#EDE6E6")
 
-<<<<<<< HEAD
-=======
 #terms = "easy","complex","tasty","low","calories","healthy","savoury"
->>>>>>> f25ad9b71fff1f12a10341352c12c32bfa0e4bfe
 respond = 'hi' 
 word = ''
 
@@ -171,6 +168,7 @@ def handle_input(answer, word):
         respond = 'fortnite rules!' 
     elif "git" in answer:
         webbrowser.open("https://github.com/GLBro/ShrekVoice/issues ", new=2)
+        respond = ''
     
     elif "recipe" in answer:
         
@@ -186,7 +184,8 @@ def handle_input(answer, word):
         #     search = "Recipe " +  recipeToGet_str 
         # else:
         #     search = "Recipe for " +  recipeToGet_str 
-        respond = webbrowser.open(search , new=2)
+        webbrowser.open(search , new=2)
+        respond = ''
 
     elif "time" in answer:
         respond= datetime.datetime.now()
@@ -195,30 +194,36 @@ def handle_input(answer, word):
         label = datetime.datetime.now().strftime('its %A the %dth of %B %Y and the time is %I:%M %p')
         respond = datetime.datetime.now().strftime('its %A the %dthe of %B %Y and the time is %I:%M %p')
     elif "day" in answer:
-        respond= webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2) 
+        webbrowser.open("https://www.youtube.com/watch?v=A2c1f4FE8cY", new=2)
+        respond = '' 
     #or "shreksophone" in answer or "instrument" in answer:
     elif "music" in answer:
         musicToGet = answer.split()[-2:]
         #musicToGet_str = ' '.join(musicToGet)
         search="https://www.youtube.com/results?search_query="+musicToGet[0]+" "+musicToGet[1]
-        respond = webbrowser.open(search , new=2)
+        webbrowser.open(search , new=2)
         respond = 'Playing Music'
         if musicToGet[0] == None:
             respond = 'Unavailable'
 
          #respond= webbrowser.open("https://www.youtube.com/watch?v=_S7WEVLbQ-Y", new=2) 
-    elif "see" in answer or "eyes" in answer: respond=
-            webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2) 
+    elif "see" in answer or "eyes" in answer:
+           webbrowser.open("https://www.youtube.com/watch?v=QmTNoYJPhc0", new=2)
+           respond = ''
     elif "donkey" in answer:
-         webbrowser.open("https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2) 
+         webbrowser.open("https://www.youtube.com/watch?v=rtUfvTzCDwE", new=2)
+         respond = ''
     elif "dance" in answer:
           webbrowser.open("https://www.youtube.com/watch?v=SF8fWC7xOJU", new=2)
+          respond = ''
     elif "French" in answer or "learn" in answer:
         word= "french"
         setImg(word)
-        webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2) 
+        webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2)
+        respond = ''
     elif "stop" in answer:
           webbrowser.open("https://www.youtube.com/watch?v=QiLA-Igt1xg", new=2)
+          respond = ''
     elif "list" in answer:
         f= open("list.txt","w+")  
         print("you said: " + answer)
@@ -255,7 +260,14 @@ def handle_input(answer, word):
             webbrowser.open("https://www.bbc.co.uk/weather/" + place, new=2)
             respond = 'The weather at ' + place.upper() + ' can be found on BBC Weather'
         else:
-            respond = 'No location found'
+            output.destroy()
+            output = Label(text='No location found') #prints value of 'respond' variable to the label!
+            output.place(x=60, y= 45)
+            output.config(font=("Arial", int(25)),bg="#EDE6E6", wraplength=350)
+            root.update()
+            engine.say('No location found')
+            engine.runAndWait()
+            respond = 'To check the weather you must type \'what is the weather in (postcode)'
     
     elif 'joke' in answer:
         rad = '1', '2', '3', '4'
